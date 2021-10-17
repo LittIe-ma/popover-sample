@@ -8,11 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let popover = segue.destination.popoverPresentationController
         if sender is UIButton {
             popover?.sourceRect = (sender as! UIButton).bounds
         }
+
+        segue.destination.popoverPresentationController?.permittedArrowDirections = .up
+        segue.destination.preferredContentSize = CGSize(width: 400, height: 151)
+
         popover?.delegate = self
     }
 
